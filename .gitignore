@@ -1,0 +1,14 @@
+# Terraform working files and state (state can contain sensitive values)
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+crash.log
+build/
+
+# Your personal settings (email, domain) - share terraform.tfvars.example instead
+terraform.tfvars
+
+# One-off helper scripts
+add-live-activity.sh
+setup-crs.sh

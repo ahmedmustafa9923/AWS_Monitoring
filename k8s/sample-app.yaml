@@ -1,0 +1,42 @@
+# Sample workload to TEST the Kubernetes monitoring.
+#   kubectl apply -f k8s/sample-app.yaml      -> DeploymentCreated, ServiceCreated
+#   kubectl set image deploy/web web=public.ecr.aws/nginx/nginx:mainline  -> DeploymentUpdated
+#   kubectl scale deploy/web --replicas=4     -> DeploymentUpdated
+#   kubectl delete -f k8s/sample-app.yaml     -> DeploymentDeleted (+ email alert)
+# Replace the image with your own ECR image: <account>.dkr.ecr.<region>.amazonaws.com/crs/web:v1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: default
+  labels: { app: web }
+spec:
+  replicas: 2
+  selector:
+    matchLabels: { app: web }
+  template:
+    metadata:
+      labels: { app: web }
+    spec:
+      containers:
+        - name: web
+          image: public.ecr.aws/nginx/nginx:stable
+          ports:
+            - containerPort: 80
+          resources:
+            requests: { cpu: 100m, memory: 64Mi }
+            limits: { cpu: 250m, memory: 128Mi }
+          readinessProbe:
+            httpGet: { path: /, port: 80 }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: default
+spec:
+  type: LoadBalancer
+  selector: { app: web }
+  ports:
+    - port: 80
+      targetPort: 80

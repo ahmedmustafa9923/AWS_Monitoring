@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Code Rendering Studio — Cloud & DevOps Projects</title>
+  <meta name="description" content="Code Rendering Studio: AWS, Terraform, Kubernetes and Docker projects with production-grade monitoring.">
+  <style>
+    :root { --bg:#0e1116; --panel:#161b22; --text:#e6edf3; --muted:#8b949e; --accent:#ff9900; --line:#30363d; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    body { background:var(--bg); color:var(--text); font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; }
+    .wrap { max-width:1040px; margin:0 auto; padding:0 20px; }
+    header { padding:24px 0; border-bottom:1px solid var(--line); }
+    header .wrap { display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .logo { font-weight:700; letter-spacing:.3px; } .logo span { color:var(--accent); }
+    nav a { color:var(--muted); text-decoration:none; margin-left:20px; } nav a:hover { color:var(--text); }
+    .hero { padding:80px 0 56px; }
+    .hero h1 { font-size:clamp(2rem,5vw,3.2rem); line-height:1.15; max-width:760px; }
+    .hero p { color:var(--muted); max-width:640px; margin:18px 0 28px; font-size:1.1rem; }
+    .btn { display:inline-block; padding:12px 22px; border-radius:8px; background:var(--accent); color:#111; font-weight:600; text-decoration:none; }
+    .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); margin-left:10px; }
+    h2 { font-size:1.5rem; margin:48px 0 20px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:18px; }
+    .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:22px; }
+    .card h3 { margin-bottom:8px; } .card p { color:var(--muted); font-size:.95rem; }
+    .tags { margin-top:14px; display:flex; flex-wrap:wrap; gap:6px; }
+    .tags span { font-size:.75rem; padding:3px 9px; border-radius:99px; border:1px solid var(--line); color:var(--muted); }
+    footer { margin-top:72px; padding:28px 0; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="logo">Code <span>Rendering</span> Studio</div>
+      <nav><a href="#projects">Projects</a><a href="#services">Services</a><a href="#contact">Contact</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Cloud infrastructure that watches itself.</h1>
+      <p>I build AWS environments as code with Terraform — Docker hosts, Kubernetes (EKS), serverless automation and CloudWatch monitoring that tells you what changed, who changed it, and when.</p>
+      <a class="btn" href="#projects">See the work</a>
+      <!-- Replace with your Fiverr profile / gig URL -->
+      <a class="btn ghost" href="https://www.fiverr.com/https://www.fiverr.com/users/ahmed_mustafa9" rel="noopener">Hire me on Fiverr</a>
+    </section>
+
+    <section id="projects">
+      <h2>Featured projects</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>AWS Multi-Server Monitoring Platform</h3>
+          <p>Terraform-provisioned EC2 Docker fleet + EKS cluster. Every container, image and Kubernetes Deployment create/update/delete is tracked in CloudWatch, archived to S3 by Lambda, and alerted via SNS.</p>
+          <div class="tags"><span>Terraform</span><span>EKS</span><span>Docker</span><span>CloudWatch</span><span>Lambda</span><span>S3</span></div>
+        </article>
+        <article class="card">
+          <h3>Your next project</h3>
+          <p>Duplicate this card for each delivery. Add a screenshot of the CloudWatch dashboard, a short problem → solution → result summary, and a link to the repo.</p>
+          <div class="tags"><span>Add tags</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="activity">
+      <h2>Live infrastructure activity</h2>
+      <p style="color:var(--muted);margin:-8px 0 16px">Real events from my AWS monitoring stack — Docker containers, image pushes and Kubernetes changes — streamed through CloudWatch, Lambda and S3. <span id="activity-status" style="color:var(--accent)">Loading…</span></p>
+      <ul id="activity-list" class="act-list"></ul>
+      <style>
+        .act-list{list-style:none;display:flex;flex-direction:column;gap:8px;max-height:460px;overflow-y:auto}
+        .act-item{display:flex;align-items:flex-start;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+        .act-icon{font-size:1.2rem;line-height:1.4}
+        .act-body{flex:1;min-width:0}
+        .act-head{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline}
+        .act-action{font-size:.75rem;padding:2px 8px;border-radius:99px;border:1px solid var(--accent);color:var(--accent);text-transform:uppercase;letter-spacing:.4px}
+        .act-where{color:var(--muted);font-size:.85rem}
+        .act-target{color:var(--muted);font-size:.9rem;font-family:ui-monospace,Menlo,monospace;overflow-wrap:anywhere}
+        .act-time{color:var(--muted);font-size:.8rem;white-space:nowrap}
+        .act-empty{color:var(--muted);padding:12px}
+      </style>
+    </section>
+
+    <section id="services">
+      <h2>Services</h2>
+      <div class="grid">
+        <div class="card"><h3>Infrastructure as Code</h3><p>Terraform modules for VPC, EC2, EKS, ECR, IAM — reproducible and reviewable.</p></div>
+        <div class="card"><h3>Monitoring & Alerting</h3><p>CloudWatch dashboards, alarms, Container Insights and change auditing.</p></div>
+        <div class="card"><h3>Containers & Kubernetes</h3><p>Dockerizing apps, ECR pipelines and EKS deployments.</p></div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p style="color:var(--muted)">Message me through Fiverr to start a project.</p>
+    </section>
+  </main>
+
+  <footer><div class="wrap">© Code Rendering Studio · Hosted on AWS S3 + CloudFront, deployed with Terraform</div></footer>
+  <script src="/activity.js" defer></script>
+</body>
+</html>

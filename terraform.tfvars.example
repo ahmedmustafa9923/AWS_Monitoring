@@ -1,0 +1,28 @@
+# Copy to terraform.tfvars and edit.  (terraform.tfvars is git-ignored)
+
+project_name = "crs"
+environment  = "dev"
+aws_region   = "us-east-1"
+alert_email  = "you@example.com"
+
+# Your IP for SSH, e.g. "203.0.113.10/32". Empty = SSH closed, use SSM instead.
+ssh_allowed_cidr = ""
+
+# Add or remove servers here - Terraform creates/destroys to match.
+instances = {
+  "app-1"    = { instance_type = "t3.small", role = "app" }
+  "app-2"    = { instance_type = "t3.small", role = "app" }
+  "worker-1" = { instance_type = "t3.small", role = "worker" }
+}
+
+ecr_repositories = ["web", "api"]
+
+# EKS costs money even when idle; set false while learning EC2 + Docker only.
+enable_eks       = true
+eks_version      = "1.31"
+eks_node_desired = 2
+
+# ---- Portfolio site (2nd priority) ----
+enable_website      = false
+domain_name         = "coderenderingstudio.com" # <- replace with your real domain
+create_route53_zone = true
